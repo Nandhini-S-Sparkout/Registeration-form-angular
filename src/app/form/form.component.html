@@ -1,0 +1,161 @@
+<section class="bg-primary p-3 p-md-4 p-xl-5">
+    
+    <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-5 text-center">
+                  <h2 class="h3 justify-content-center"><span>Registeration Form</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+              <div class="row gy-3 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="Enter your Name" formControlName="name">
+                    <label for="name" class="form-label">Name</label>
+                    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+                      <div *ngIf="name?.errors">Name is required.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+                    <label for="email" class="form-label">Email</label>
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+                      <div *ngIf="email?.errors">Email is required.</div>
+                      <div *ngIf="email?.errors">Invalid email format.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number" formControlName="phoneNumber">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <!-- Add validation for phone number if needed -->
+                    <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="text-danger">
+                        <div *ngIf="phoneNumber?.errors">phoneNumber is required.</div>
+                        <div *ngIf="phoneNumber?.errors">Invalid phoneNumber format,requires 10 digits phoneNumber.</div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                    <label for="password" class="form-label">Password</label>
+                    <!-- Add validation for password if needed -->
+                    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
+                        <div *ngIf="password?.errors">password is required.</div>
+                        <div *ngIf="password?.errors">Invalid password format.</div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-12 d-flex">
+                  <div>
+                    <label class="form-label me-3">DOB</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="date" class="form-control justify-content-center" id="dob" placeholder="choose date" formControlName="dob">
+                    <!-- Add validation for date of birth if needed -->
+                    <div *ngIf="dob?.invalid && (dob?.dirty || dob?.touched)" class="text-danger">
+                        <div *ngIf="dob?.errors">DOB is required.</div>
+                        <div *ngIf="dob?.errors">Invalid DOB format.</div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-12 d-flex">
+                  <div>
+                    <label class="form-label me-3">Gender</label>
+                  </div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Male" formControlName="gender">
+                  <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Female" formControlName="gender">
+                    <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Others" formControlName="gender">
+                    <label class="form-check-label" for="flexRadioDefault3">Others</label>
+                  </div>
+                  <!-- Add validation for gender if needed -->
+                  <div *ngIf="gender?.invalid && (phoneNumber?.dirty || gender?.touched)" class="text-danger">
+                   
+                  </div>
+                </div>
+
+              <!--hobbies-->
+    
+
+                  <div class="col-12 d-flex">
+                    <div>
+                        <label class="form-label me-3">Hobbies</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" required>
+                        <label class="form-check-label" for="flexCheckDefault1">Reading</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" required>
+                      <label class="form-check-label" for="flexCheckChecked2">Music</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3" required>
+                      <label class="form-check-label" for="flexCheckChecked3">Cricket</label>
+                    </div>
+                      <!-- Add validation for hobbies if needed -->
+                  <div *ngIf="hobbies?.invalid && (hobbies?.dirty || hobbies?.touched)" class="text-danger">
+                    <div *ngIf="hobbies?.errors">Hobbies required.</div>
+                    <div *ngIf="hobbies?.errors">Invalid hobbies format.</div>
+                  </div>
+                </div>
+                  </div>
+                
+                  <div class="mb-3 d-flex">
+                    <label for="formFileSm" class="form-label">Profile</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="profile" (change)="onSelectProfile($event)">
+                    <img [src]="imageUrl" class="rounded-circle img-thumbnail mx-auto d-block " alt="Preview">
+                    <!-- Add validation for profile picture if needed -->
+                    <div *ngIf="profile?.invalid && (profile?.dirty || profile?.touched)" class="text-danger">
+                      <div *ngIf="profile?.errors">profile is required.</div>
+                      <div *ngIf="profile?.errors">Invalid profile </div>
+                    </div>
+                  </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" formControlName="termsAgreed" required>
+                  <label class="form-check-label text-secondary" for="iAgree">
+                    I agree to the <a href="#!" class="link-primary text-decoration-none">terms and conditions</a>
+                  </label>
+                </div>
+                <div *ngIf="termsAgreed?.invalid && (termsAgreed?.dirty || termsAgreed?.touched)" class="text-danger">
+                  <div *ngIf="termsAgreed?.errors">You must agree to the terms and conditions.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-grid">
+                  <button class="btn bsb-btn-2xl btn btn-primary" type="submit" [disabled]="!registrationForm.valid ||formSubmitted">Sign up</button>
+                </div>
+              </div>
+              <!-- Success message -->
+            <div *ngIf="formSubmitted;else formInvalid" class="text-success mt-3">Form successfully submitted.</div>
+            <ng-template #formInvalid>
+                <div class="text-danger mt-3">Form is not ready for submission. Please fill out all required fields.</div></ng-template>
+                
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
