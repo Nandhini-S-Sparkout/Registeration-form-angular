@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  registrationForm!: FormGroup;
+  registrationForm!: FormGroup ;
   formSubmitted: boolean = false; 
   imageUrl: string | ArrayBuffer | null = null;
   constructor(private fb: FormBuilder) { }
@@ -26,7 +26,7 @@ export class FormComponent {
         cricket: [false]
       }, Validators.required), 
       profile: ['', Validators.required], 
-      iAgree: ['', Validators.requiredTrue]
+      termsAgreed: ['', Validators.requiredTrue]
     });
   }
 
@@ -34,10 +34,13 @@ export class FormComponent {
     if(this.registrationForm.valid) {
       // Form submission logic
       console.log("Form is successfully submitted",this.registrationForm.value);
-      this.formSubmitted = true;
+      this.formSubmitted = true;  
+   
     } 
     else {
       // Handle form validation errors
+      
+     
       console.log("Form is not ready for submission. Please fill out all required fields.");
       this.formSubmitted = false;
     }
